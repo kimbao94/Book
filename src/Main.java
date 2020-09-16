@@ -88,5 +88,31 @@ public class Main {
         for (int i = 0; i < bookList.length; i++) {
             System.out.println(bookList[i].getPrice());
         }
+
+        //tìm tên = giá
+        System.out.println("nhập giá để tìm sách");
+        double price = scanner.nextDouble();
+        for (int i = 0; i < bookList.length; i++) {
+            if (price == (bookList[i].getPrice())){
+                System.out.println("tên của cuốn sách : " + bookList[i].getName());
+            }
+        }
+        //tìm tên = giá tìm kiếm nhị phân
+        int max = bookList.length - 1;
+        int min = 0;
+        int mid = 0;
+
+        while (min <= max){
+            mid = (max + min)/2;
+            if ((bookList[mid].getPrice()) == price){
+                System.out.println("tên của cuốn sách : " + bookList[mid].getName());
+            }
+            else if ((bookList[mid].getPrice()) < price) {
+                min = mid + 1;
+            } else {
+                max = mid - 1;
+            }
+        }
+        System.out.println("không tìm thấy cuốn sách có giá " + price);
     }
 }
